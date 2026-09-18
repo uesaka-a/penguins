@@ -104,16 +104,22 @@ st.write(
     最も高い正解率になる組み合わせを探してください．
 
     **MISSION 3**
+    
+    特徴量を自由に組み合わせて，
+    最も高い正解率になる組み合わせを探してください．
 
-    すべての特徴量を使った場合と
-    比較してください．
+    すべての特徴量を使った場合とも
+    比較してみましょう．
     """
 )
 
-st.caption(
-    "特徴量は，多ければ多いほどよいのでしょうか？"
+st.write(
+    "**どの特徴量の組み合わせが最も高い正解率になりましたか？**"
 )
 
+st.write(
+    "**特徴量は，多ければ多いほどよいのでしょうか？**"
+)
 
 # -------------------------
 # 特徴量選択
@@ -204,15 +210,7 @@ if st.button(
             "正解率": round(accuracy * 100, 1)
         }
 
-        # 同じ組み合わせは重複して保存しない
-        already_exists = any(
-            item["使用した特徴量"] == new_result["使用した特徴量"]
-            for item in st.session_state.history
-        )
-
-        if not already_exists:
-            st.session_state.history.append(new_result)
-
+        st.session_state.history.append(new_result)
 
         # -------------------------
         # 結果表示
@@ -236,30 +234,6 @@ if st.button(
 
         for label in selected_labels:
             st.write(f"・{label}")
-
-        st.divider()
-
-        if len(selected_labels) == 1:
-
-            st.info(
-                "💡 他の特徴量を1個だけ選んで，"
-                "結果を比べてみましょう．"
-            )
-
-        elif len(selected_labels) == 2:
-
-            st.info(
-                "💡 別の2つの組み合わせでは"
-                "どうなるでしょうか？"
-            )
-
-        else:
-
-            st.info(
-                "💡 特徴量を減らしても，"
-                "同じくらい分類できるでしょうか？"
-            )
-
 
 # -------------------------
 # 実験履歴を表示
