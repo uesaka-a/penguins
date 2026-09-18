@@ -16,7 +16,7 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("🐧 ペンギン分類チャレンジ")
+st.title("🐧ペンギン分類チャレンジ🐧")
 
 st.write(
     """
